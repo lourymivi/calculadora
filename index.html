@@ -1,0 +1,75 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>mi calculadora</title> 
+    <link type="text/css" rel="stylesheet" href="stilo.css">
+</head> 
+<body> 
+    <div class="container">
+    <table class="calculadora">
+        <tr> 
+                   
+      <tr>
+        <td colspan="4"><span id="resultado"> 
+        <input class="display" type="text" id="display" disabled></span>
+    </td>
+    </tr>
+       <tr>
+    <td><button onclick="appendToDisplay(1)">1</button></td> <!-- Agrega el número 1 al display --> 
+        <td><button onclick="appendToDisplay(2)">2</button></td> <!-- Agrega el número 2 al display --> 
+            <td><button onclick="appendToDisplay(3)">3</button></td> <!-- Agrega el número 3 al display -->
+                <td> <button onclick="appendToDisplay('/')">/</button></td> <!-- Agrega el operador de division al display --> 
+</tr>
+<tr>
+<td><button onclick="appendToDisplay(4)">4</button> </td>
+    <td><button onclick="appendToDisplay(5)">5</button> </td>
+        <td><button onclick="appendToDisplay(6)">6</button> </td>
+            <td><button onclick="appendToDisplay('*')">*</button></td><!-- Agrega el operador multiplicaciónal display -->
+</tr>
+<tr>
+    <td><button onclick="appendToDisplay(7)">7</button></td>
+        <td><button onclick="appendToDisplay(8)">8</button> </td>
+            <td><button onclick="appendToDisplay(9)">9</button></td> 
+                <td><button onclick="appendToDisplay('-')">-</button></td> <!-- Agrega el operador de resta al display --> 
+</tr>
+<tr>
+    <td><button onclick="appendToDisplay(0)">0</button> </td>
+          <td><button onclick="calculateResult()">=</button></td> <!-- Calcula el resultado de la expresión en el display --> 
+                <td><button onclick="appendToDisplay('+')">+</button> </td><!-- Agrega el operador de suma al display --> 
+                        <td><button onclick="clearDisplay()">C</button></td> <!-- Limpia la pantalla -->
+</tr>
+    </table>
+    </div>
+</body> 
+<script> 
+    let currentInput =''; 
+    let display = document.getElementById ('display') 
+ 
+    function appendToDisplay (value) 
+    { 
+        currentInput += value;  
+        display.value = currentInput; 
+    } 
+ 
+    function clearDisplay () 
+    { 
+        currentInput = '';  
+        display.value = ''; 
+    } 
+    // Funcion  para calcular el resultado de la exprecion ingresada por el usuario  
+    function calculateResult (){ 
+        try { 
+            const result = eval(currentInput);// Evalua el resultado de la expresion y guarda el resultado  
+            display.value = result; // Muestra el resultado en el display 
+            currentInput = result.toString(); // Convierte el resultado en una CADENA  y lo almacena  
+ 
+        } catch (error) { 
+            display.value =' error'; // En caso del que el usuario haga alguna operacion erronea muestra un error en el display  
+        } 
+             
+    } 
+ 
+</script> 
+</html>
